@@ -2,8 +2,20 @@
 
 {% block title %}<title>Posts</title>{% endblock %}
 {% block content %}
-<body>
+
 <h1>All Posts</h1>
+<hr>
+  <h2>Craete New Blog Post:</h2>
+  <form action="/posts" method="POST">
+    Title: <input type="text" name="title" id="title">
+    <br>
+    Content: <input type="text" name="content" id="content">
+    <br>
+    Author: <input type="text" name="author" id="author">
+    <br>
+    <input type="submit" value="POST">
+  </form>
+<hr>
 {% for post in context %}
 <h3>{{ post.title }}</h3>
 {% if post.author %}
