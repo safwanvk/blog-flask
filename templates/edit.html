@@ -7,13 +7,16 @@
 <hr>
   <h2>Edit:</h2>
   <form action="/posts/edit/{{ post.id }}" method="POST">
-    Title: <input type="text" name="title" id="title" value="{{ post.title }}">
+    <label for="title">Title:</label>
+    <input class="form-control" name="title" id="title" type="text" value="{{ post.title }}" aria-label="Enter Title">
     <br>
-    Content: <input type="text" name="content" id="content" value="{{ post.content }}">
+    <label for="content">Content:</label>
+    <textarea class="form-control" id="content" name="content" rows="3" aria-label="Enter Content..">{{ post.content }}</textarea>
     <br>
-    Author: <input type="text" name="author" id="author" value="{{ post.author }}">
+    <label for="author">Author:</label>
+    <input class="form-control" name="author" id="author" type="text" value="{{ post.author }}" aria-label="Enter Author">
     <br>
-    <input type="submit" value="SAVE">
+    <input class="btn btn-primary btn-sm" type="submit" value="Save">
   </form>
 <hr>
 
