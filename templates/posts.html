@@ -5,28 +5,35 @@
 
 <h1>All Posts</h1>
 <hr>
-  <h2>Craete New Blog Post:</h2>
+  <h2>Create New Blog Post:</h2>
   <form action="/posts" method="POST">
-    Title: <input type="text" name="title" id="title">
+    <label for="title">Title:</label>
+    <input class="form-control" name="title" id="title" type="text" placeholder="Enter Title" aria-label="Enter Title">
     <br>
-    Content: <input type="text" name="content" id="content">
+    <label for="content">Content:</label>
+    <textarea class="form-control" id="content" name="content" rows="3" placeholder="Enter Content.." aria-label="Enter Content.."></textarea>
     <br>
-    Author: <input type="text" name="author" id="author">
+    <label for="author">Author:</label>
+    <input class="form-control" name="author" id="author" type="text" placeholder="Enter Author" aria-label="Enter Author">
     <br>
     <input type="submit" value="POST">
   </form>
 <hr>
 {% for post in context %}
-<h3>{{ post.title }}</h3>
-{% if post.author %}
-  <h3>By: {{ post.author }}</h3>
-{% else %}
-  <h3>By: N/A</h3>
-{% endif %}
-<p>{{ post.content }}</p>
-<a href="/posts/edit/{{ post.id }}">Edit</a>
-<a href="/posts/delete/{{ post.id }}">Delete</a>
-<hr>
+  <br>
+  <h3>{{ post.title }}</h3>
+  {% if post.author %}
+    <small>Written by: {{ post.author }} on {{ post.date_published }}</small>
+  {% else %}
+    <small>Written by: Unknown on {{ post.date_published }}</small>
+  {% endif %}
+  <br>
+  <br>
+  <p>{{ post.content }}</p>
+  <a class="btn btn-danger btn-sm" href="/posts/edit/{{ post.id }}">Edit</a>
+  <a class="btn btn-primary btn-sm" href="/posts/delete/{{ post.id }}">Delete</a>
+  <br>
+  <hr>
 {% endfor %}
 </body>
 {% endblock %}
